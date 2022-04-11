@@ -1,15 +1,14 @@
-# SoftwareArchitectureCLassApplication
-This is sandbox code to show proof of concept usages of some principles taught in University of Cincinnati's Software Architecture Class.
+<h1>Estimate</h1>
 
-This code base will be used for several assignments, but it's value comes from having several libraries in play, as well as some example usages of concepts of singletons, static initializers, journaling, and automation APIs
+We estimated that meeting the requirements and making the observer functionality more generic would take 30 hours to complete this project.
 
-Additionally, this also shows how to setup a Basic Action to verify a merge request compiles or not.
+<h1>Description</h1>
 
+We are required to make the observer functionality more generic so as to be able to add other types of observers and we are also needed to move the PartObservers to be in a better library location. Instead of relying on CoreSession, we'll most likely require a TopLevel Session class. Then have observers from diverse needs join that top-level Session class. It contains a list of PartObservers, and also required were the various types of Observers.
 
-This software to show off some workflows with using Java and automation APIs depends upon a Java Provider to present.  Otherwise a build error will occur.
+<h1>Requirements</h1>
 
-To Resovle this install a Java JDK (such as Adopt OpenJDK), and then provide the proper header includes and library location.  It is being proposed as future enhancment to make the jvm library be loaded dyanmically.
-
-Or optionally comment out the code in PerformJavaAutomationWorkflow, and turn off building the JavaLoader library.
-
-[Journaling Module Design](documentation_markdown/journaling.md)
+1. All core Observer services should be in libcore.
+2. Application specific portions of Observer should be in appropriate libraries.
+3. A high-level Session object is required. As a result, on CoreSession, application-specific observers are not registered.
+4. A second use case for observers needs to be implemented to show that core functionality is isolated but can be extensible.
